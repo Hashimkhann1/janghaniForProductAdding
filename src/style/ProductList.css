@@ -1,0 +1,5 @@
+.Product-list-main div p:hover{
+    background-color: rgb(165, 165, 165);
+    cursor: pointer;
+    color: rgb(53, 52, 52) !important;
+}
