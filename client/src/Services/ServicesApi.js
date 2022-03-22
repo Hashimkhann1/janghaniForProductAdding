@@ -1,9 +1,13 @@
-import React from 'react'
+import axios from 'axios'
 
-const ServicesApi = () => {
-  return (
-    <div>ServicesApi</div>
-  )
+const url = 'http://localhost:4000'
+
+
+export const addProductData = async (data) => {
+  try {
+    console.log(data)
+    await axios.post(`${url}/add/product` , data)
+  } catch (error) {
+    console.log('error while adigProduct from ServicesApi in client : ' , error)
+  }
 }
-
-export default ServicesApi
