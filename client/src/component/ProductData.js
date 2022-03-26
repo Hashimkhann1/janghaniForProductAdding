@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import testImage from './keybord.jpg'
 
 // style
 
 import '../style/ProductData.css'
-import { addProductData } from '../Services/ServicesApi'
+import { addProductData , uploadFile } from '../Services/ServicesApi'
 
 const ProductData = () => {
 
@@ -17,6 +17,7 @@ const ProductData = () => {
   }
 
   const [ProductInputData , setProductInputData] = useState(ProductDataValue)
+  const [file , setFile] = useState()
 
   const getProductData = (e) => {
     setProductInputData({...ProductInputData , [e.target.name]:e.target.value})
@@ -26,6 +27,19 @@ const ProductData = () => {
     addProductData(ProductInputData)
   }
 
+  useEffect(() => {
+    const getImage = async () => {
+      if(file){
+        const data = new FormData()
+        data.append('name' , file.name)
+        data.append("file" , file);
+
+        await uploadFile(data)
+      }
+    }
+    getImage();
+  }, [file])
+
   return (
     <div className='Product-main-data'>
         <div className='product-data-image'>
@@ -34,7 +48,7 @@ const ProductData = () => {
         <div className='Product-data-input'>
         <div className='col-12 col-md-8 col-lg-6 mt-2'>
             <label for='ProImage' className='fs-4 border p-2 border-danger rounded text-secondary' >choose Image</label>
-            <input type='file' placeholder='Product Image' name='ProductImage' onChange={(e) => getProductData(e)} className='form-control border-danger fs-4 d-none' id='ProImage'/>
+            <input type='file' placeholder='Product Image' name='ProductImage' onChange={(e) => setFile(e.target.files[0])} className='border-danger fs-4' id='ProImage'/>
         </div>
         <div className='col-12 col-md-8 col-lg-6 mt-2'>
             <input type='text' placeholder='Product Name' name='productName' onChange={(e) => getProductData(e)} className='form-control border-danger fs-4'/>
