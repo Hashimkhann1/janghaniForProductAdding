@@ -10,7 +10,7 @@
 import grid from 'gridfs-stream';
 import mongoose from 'mongoose';
 
-const url = 'http://localhost:8000';
+const url = 'http://localhost:4000';
 
 
 let gfs;
@@ -34,6 +34,7 @@ export const getImage = async (request, response) => {
     try {   
         const file = await gfs.files.findOne({ filename: request.params.filename });
         const readStream = gfs.createReadStream(file.filename);
+        console.log(gfs.files.findOne({filename : request.params.filename}))
         readStream.pipe(response);
     } catch (error) {
         response.status(500).json('Failed to fetch image', error);
