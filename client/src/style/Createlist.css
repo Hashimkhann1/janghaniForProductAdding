@@ -1,0 +1,7 @@
+.list-name input:focus{
+    box-shadow: none;
+    border: 1px solid #dee2e6;
+}
+.listImage{
+    height: 460px;
+}

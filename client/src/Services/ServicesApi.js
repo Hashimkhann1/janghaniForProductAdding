@@ -11,11 +11,10 @@ export const addProductData = async (data) => {
   }
 }
 
-
-// export const uploadFile = async (data) => {
-//   try {
-//     return await axios.post(`${url}/file/upload` , data)
-//   } catch (error) {
-//     console.log('error while calling uploadFile from services Api' , error)
-//   }
-// }
+export const CreateListforProduct = async (data) => {
+  try {
+    await axios.post(`${url}/create/list` , data)
+  } catch (error) {
+    console.log('error while creatingList in Api' , error)
+  }
+}

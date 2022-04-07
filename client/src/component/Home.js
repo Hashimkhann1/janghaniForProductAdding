@@ -4,7 +4,8 @@ import ProductList from './ProductList'
 
 const Home = () => {
   return (
-    <div className='container-lg'>
+     {/* <Home /> */}
+      {/* <div className='container-lg'>
         <div className='row align-items-start mt-5'>
             <div className='col-12 col-sm-12 col-md-2 col-lg-2 border'>
               <ProductList />
@@ -13,7 +14,7 @@ const Home = () => {
             <ProductData />
           </div>
         </div>
-    </div>
+    </div> */}
   )
 }
 
