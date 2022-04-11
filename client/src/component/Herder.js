@@ -30,6 +30,7 @@ const Herder = () => {
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li className='text-center'><Link to={'/product/adding'} className='text-dark text-decoration-none'>Add Product</Link></li>
           <li className='text-center'><Link to={'/'} className='text-dark text-decoration-none'>Create List</Link></li>
+          <li className='text-center'><Link to={'/find-product'} className='text-dark text-decoration-none'>Find Product</Link></li>
           </ul>
         </li>
       </ul>

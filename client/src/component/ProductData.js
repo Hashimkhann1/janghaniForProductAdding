@@ -10,14 +10,13 @@ import { addProductData } from '../Services/ServicesApi'
 const ProductData = () => {
 
 
-  let productName = document.getElementById('#productName')
-  console.log(productName)
+  // let productName = document.getElementById('#productName')
 
   const ProductDataValue = {
     productName : '',
     price : '',
     productdescripition : '',
-    productcaterory : '',
+    productcategory: '',
     ProductImage : '',
     date : new Date()
   }
@@ -37,15 +36,30 @@ const ProductData = () => {
 
   const getProductData = (e) => {
     setProductInputData({...ProductInputData , [e.target.name]:e.target.value})
+    console.log(ProductInputData)
   }
 
 
   const addProduct = () => {
-    gitImage()
-    addProductData(ProductInputData)
-    setTimeout(() => {
+    if (!ProductInputData.productName) {
+      alert('Add Product Name')
+    }
+    else if(!ProductInputData.price){
+      alert('Add Product price')
+    }
+    else if(!ProductInputData.productdescripition){
+      alert('Add Product Information')
+    }
+    else if(!ProductInputData.productcategory){
+      alert('Add Product category')
+    }
+    else {
+      gitImage()
+      addProductData(ProductInputData)
+      setTimeout(() => {
       window.location.reload()
     }, 2000)
+    }
   }
 
   const CheckForImage = () => {
@@ -57,7 +71,6 @@ const ProductData = () => {
   useEffect(() => {
     CheckForImage()
   }, [Image])
-
 
   return (
     <div className='container-lg'>
@@ -80,7 +93,7 @@ const ProductData = () => {
             <textarea className='form-control border-danger fs-5' id='productDesc' name='productdescripition' onChange={(e) => getProductData(e)} placeholder='Product Information'></textarea>
         </div>
         <div className='col-6 mt-2'>
-          <input type='text' placeholder='Catregory Name' name='productcaterory' id='productcate' onChange={(e) => getProductData(e)} className='form-control border-danger fs-5' />
+          <input type='text' placeholder='Catregory Name' name='productcategory' id='productcate' onChange={(e) => getProductData(e)} className='form-control border-danger fs-5' />
         </div>
         <div className='text-center mt-3 mb-2 Product-data-btn'>
           <button className='p-2 ps-5 pe-5 bg-danger text-white fw-bold fs-4 rounded-pill border boredr-danger' onClick={addProduct}>Add</button>

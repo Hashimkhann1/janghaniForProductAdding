@@ -13,7 +13,7 @@ const proSchema = mongoose.Schema({
         type : String,
         require : true
     },
-    productcaterory : {
+    productcategory : {
         type : String,
         require : true
     },
